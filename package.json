@@ -1,0 +1,17 @@
+{
+  "name": "trafficmanagement",
+  "version": "1.0.0",
+  "description": "This the backend API for real time traffic management.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Rushin Shah",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2"
+  }
+}
