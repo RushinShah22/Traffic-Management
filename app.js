@@ -5,6 +5,7 @@ const shortestPathRouter = require("./routes/shortestPath");
 const trafficUpdateRouter = require("./routes/trafficUpdates");
 
 const app = express();
+app.use(express.json());
 
 app.use("/locations", locationRoute);
 app.use("/roads", roadsRouter);
