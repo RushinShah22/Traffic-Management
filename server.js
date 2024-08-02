@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = require("./app");
-const createGraphInit = require("./utils/createGraph");
+const createGraph = require("./utils/createGraph");
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ async function main() {
     const MONGOURI = process.env.MONGO_URI;
     await mongoose.connect(MONGOURI);
     console.log("Connected to DB.");
-    await createGraphInit();
+    await createGraph();
     app.listen(process.env.PORT, () => {
       console.log("Listening on port " + process.env.PORT);
     });

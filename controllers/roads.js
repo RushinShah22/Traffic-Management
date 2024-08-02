@@ -1,4 +1,5 @@
 const roadModel = require("./../models/roads");
+const createGraph = require("./../utils/createGraph");
 
 module.exports.addRoad = async (req, res) => {
   try {
@@ -9,6 +10,7 @@ module.exports.addRoad = async (req, res) => {
       trafficCondition: req.body.traffic_condition,
     };
     const road = await roadModel.create(newRoad);
+    await createGraph();
     res.status(201).json({
       status: "success",
       data: road,
@@ -33,6 +35,7 @@ module.exports.updateRoadCondition = async (req, res) => {
         new: true,
       }
     );
+    await createGraph();
     res.status(201).json({
       status: "success",
       road,

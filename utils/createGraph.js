@@ -1,7 +1,7 @@
 const roadModel = require("./../models/roads");
 const Graph = require("node-dijkstra");
 
-async function createGraphInit() {
+async function createGraph() {
   try {
     const roads = await roadModel.find({});
 
@@ -26,11 +26,10 @@ async function createGraphInit() {
     });
 
     let graph = new Graph(adjList);
-    console.log(graph);
     global.graph = graph;
   } catch (err) {
     console.error("Error creating initial graph:", err);
   }
 }
 
-module.exports = createGraphInit;
+module.exports = createGraph;
