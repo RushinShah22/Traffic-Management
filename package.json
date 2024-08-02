@@ -4,7 +4,8 @@
   "description": "This the backend API for real time traffic management.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "node server.js"
   },
   "author": "Rushin Shah",
   "license": "ISC",
