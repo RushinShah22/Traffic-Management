@@ -47,3 +47,12 @@ npm start
 Open postman and use:
 
 http://localhost:3000
+
+
+## Future Features
+
+1.) Handle async operations with mutex locks to avoid race condition.
+
+2.) Implementing Dynamic Dijkstra for better Time Complexity.
+
+3.) Better Error Handling.
