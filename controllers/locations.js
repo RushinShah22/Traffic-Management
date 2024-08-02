@@ -10,7 +10,7 @@ module.exports.addLocation = async (req, res) => {
       name: req.body.name,
       location: coordinates,
     };
-    console.log(loc);
+
     const location = await locationModel.create(loc);
     res.status(201).json({
       status: "success",
