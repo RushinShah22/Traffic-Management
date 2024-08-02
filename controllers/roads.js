@@ -20,3 +20,27 @@ module.exports.addRoad = async (req, res) => {
     });
   }
 };
+
+module.exports.updateRoadCondition = async (req, res) => {
+  try {
+    const road = roadModel.findByIdAndUpdate(
+      req.body.road_id,
+      {
+        trafficCondition: req.body.traffic_condition,
+      },
+      {
+        runValidators: true,
+        new: true,
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      road,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};

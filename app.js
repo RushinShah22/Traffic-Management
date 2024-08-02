@@ -1,11 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const locationRoute = require("./routes/locations");
 const roadsRouter = require("./routes/roads");
 const shortestPathRouter = require("./routes/shortestPath");
 const trafficUpdateRouter = require("./routes/trafficUpdates");
-const createInitGraph = require("./utils/createGraph");
 
-const graph = await createInitGraph();
 const app = express();
 app.use(express.json());
 app.use(cors());

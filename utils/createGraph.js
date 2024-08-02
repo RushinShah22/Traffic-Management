@@ -1,31 +1,36 @@
 const roadModel = require("./../models/roads");
 const Graph = require("node-dijkstra");
 
-async function createInitGraph() {
+async function createGraphInit() {
   try {
     const roads = await roadModel.find({});
 
-    const adjList = {};
+    let adjList = {};
 
     roads.forEach((road) => {
-      const { startNode, endNode, distance, trafficCondition } = road;
+      let { startLoc, endLoc, distance, trafficCondition } = road;
       if (trafficCondition == "moderate") {
         distance += 5;
       }
       if (trafficCondition == "high") {
         distance += 10;
       }
-      if (!adjList[startNode]) {
-        adjList[startNode] = {};
+      if (!adjList[startLoc]) {
+        adjList[startLoc] = {};
       }
-      adjList[startNode][endNode] = distance;
+      if (!adjList[endLoc]) {
+        adjList[endLoc] = {};
+      }
+      adjList[startLoc][endLoc] = distance;
+      adjList[endLoc][startLoc] = distance;
     });
 
-    const graph = new Graph(adjList);
-    return graph;
+    let graph = new Graph(adjList);
+    console.log(graph);
+    global.graph = graph;
   } catch (err) {
     console.error("Error creating initial graph:", err);
   }
 }
 
-module.exports = createGraphInit();
+module.exports = createGraphInit;
